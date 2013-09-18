@@ -7,11 +7,33 @@
 //
 
 #import "CLAppDelegate.h"
+#import "HTMLParser.h"
+#import "HTMLNode.h"
+#import "CLViewController.h"
+#import "PTpogodaData.h"
 
 @implementation CLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+   // InitialConrtoller
+    UIViewController *rootViewController=self.window.rootViewController;
+   // sleep(2);
+    UIStoryboard * storyboard=rootViewController.storyboard;
+    CLViewController * dataController=[storyboard instantiateViewControllerWithIdentifier:@"InitialConrtoller"];
+    [dataController refreshData];
+    int dataload=0;
+    if (dataload==0){
+        self.window.rootViewController=dataController;
+        
+    }else
+       if (dataload>0)
+       {
+           UIAlertView * alertview=[[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Отсутствует подключение к интернету" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+           [alertview show];
+       }
+    
+    //
     // Override point for customization after application launch.
     return YES;
 }

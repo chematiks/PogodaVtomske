@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLViewController.h"
+
 
 @interface CLAppDelegate : UIResponder <UIApplicationDelegate>
 
+
 @property (strong, nonatomic) UIWindow *window;
+@property (strong,nonatomic) CLViewController * dataController;
 
 @end
